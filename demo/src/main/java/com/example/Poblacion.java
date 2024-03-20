@@ -7,6 +7,7 @@ public class Poblacion{
     Date fechaFin;
     int numBacterias;
     double temperatura;
+    Luminosidad luminosidad;
     Dosis dosisComida;
 
     public Poblacion(String nombre, Date fechaInicio, Date fechaFin, int numBacterias, double temperatura, Dosis dosisComida){
@@ -22,6 +23,17 @@ public class Poblacion{
 
 
     //toString:
+
+    public String toString({
+        String texto="";
+        texto += "Nombre: "+nombre+"\n";
+        texto += "Fecha de inicio: "+fechaInicio+"\n";
+        texto += "Fecha de fin: "+fechaFin+"\n";
+        texto += "Número de bacterias: "+numBacterias+"\n";
+        texto += "Temperatura: "+temperatura+"\n";
+        texto += "Dosis de comida: "+dosisComida+"\n";
+        return texto;
+    }
     
 
 }
