@@ -1,19 +1,20 @@
 package PracticaFinal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Poblacion extends Experimento{
 
     private String nombre;
-    private Date fechaInicio;
+    private LocalDate fechaInicio;
     private Date fechaFin;
     private Luminosidad nivelLuz;
 
-    public Poblacion(String nombre, Date fechaInicio, Date fechaFin, int numBacterias, double temperatura, Dosis dosisComida, Luminosidad nivelLuz){
+    public Poblacion(String nombre, LocalDate fechaInicio, int numBacterias, double temperatura, Dosis dosisComida, Luminosidad nivelLuz){
         super(numBacterias, temperatura, dosisComida);
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.nivelLuz = nivelLuz;       
+        this.nivelLuz = nivelLuz;  
+        this.fechaFin=Date.valueOf(fechaInicio.plusDays(30));     
     }
 
     public enum Luminosidad{Alta, Media, Baja};
@@ -28,11 +29,11 @@ public class Poblacion extends Experimento{
         this.nombre = nombre;
     }
 
-    public Date getFechaInicio(){
+    public LocalDate getFechaInicio(){
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio){
+    public void setFechaInicio(LocalDate fechaInicio){
         this.fechaInicio = fechaInicio;
     }
 
