@@ -29,7 +29,7 @@ public class Experimento{
         this.temperatura = temperatura;
         this.dosisComida = dosisComida;
     }
-    
+
     //Getters y setters:
 
     public int getNumeroDeBacterias(){

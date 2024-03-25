@@ -13,8 +13,17 @@ public class Laboratorio{
         this.nombreLab=nombreLab;
     }
 
-    public void realizarExperimento(Experimento e){
-        
+    public void createNewFile(File archivo){
+        try {
+            if (archivo.createNewFile()) {
+                System.out.println("Archivo creado: " + archivo.getName());
+            } else {
+                System.out.println("El archivo ya existe.");
+            }
+        } catch (IOException e) {
+            System.out.println("Ocurrió un error.");
+            e.printStackTrace();
+        }
     }
     
     public String abrirArchivo(String nombreArchivo){
@@ -37,7 +46,7 @@ public class Laboratorio{
             System.out.println("Error al leer el archivo");
         }
 
-        return contenido.toString();
+        return contenido.toString();//convierte el StringBuilder a una cadena String
 
     }
 
