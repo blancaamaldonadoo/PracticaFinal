@@ -17,7 +17,6 @@ public class Dosis{
         this.diaActual=0;
     }
 
-
     public int calcularDosisDiaria(){
         int dosisDiaria=0;
         if (diaActual<diaStopIncremento){
