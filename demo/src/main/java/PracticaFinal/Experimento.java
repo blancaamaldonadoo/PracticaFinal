@@ -59,22 +59,77 @@ public class Experimento{
 
     //Métodos:
 
-    public void imprimirPoblaciones(Experimento e){
-        for (Poblacion p: e.poblaciones){
+    public void imprimirPoblaciones(){
+        for (Poblacion p: this.poblaciones){
             System.out.println(p); 
         }
     }
 
-    public void modificarPoblacion(Poblacion pob, String nuevoNombre, LocalDate nuevafechaInicio, int nuevoNumBacterias, double nuevaTemperatura, Dosis nuevaDosisComida, Luminosidad nuevaLuminosidad){
-        pob.setNombre(nuevoNombre);
-        pob.setFechaInicio(nuevafechaInicio);
-        pob.setNumeroDeBacterias(nuevoNumBacterias);
-        pob.setTemperatura(nuevaTemperatura);
-        pob.setDosisComida(nuevaDosisComida);
-        pob.setNivelLuz(nuevaLuminosidad);
-        
+    public void modificarPoblacion(Poblacion pob){
+        if (this.poblaciones.contains(pob)){//Comprobar que la población pertenece al experimento:
+            BufferedReader teclado = new BufferedReader (new InputStreamReader(System.in));
+            System.out.println("Introduce el nuevo número de bacterias: ");
+            int numBacterias=0;
+            try{
+                numBacterias=Integer.parseInt(teclado.readLine());
+            }
+            catch(IOException e){
+                System.out.println("Error al leer la entrada del usuario");
+                e.printStackTrace();
+            }
+            pob.setNumeroDeBacterias(numBacterias);
+
+            System.out.println("Introduce la nueva temperatura: ");
+            double temperatura=0;
+            try{
+                temperatura=Double.parseDouble(teclado.readLine());
+            }
+            catch(IOException e){
+                System.out.println("Error al leer la entrada del usuario");
+                e.printStackTrace();
+            }
+            pob.setTemperatura(temperatura);
+
+            System.out.println("Introduce la nueva dosis de comida inicial: ");
+            int cantidadInicial=0;
+            try{
+                cantidadInicial=Integer.parseInt(teclado.readLine());
+            }
+            catch(IOException e){
+                System.out.println("Error al leer la entrada del usuario");
+                e.printStackTrace();
+            }
+
+            System.out.println("Introduce el nuevo día de stop de incremento: ");
+            int diaStopIncremento=0;
+            try{
+                diaStopIncremento=Integer.parseInt(teclado.readLine());
+            }
+            catch(IOException e){
+                System.out.println("Error al leer la entrada del usuario");
+                e.printStackTrace();
+            }
+
+            System.out.println("Introduce el nuevo nivel de luminosidad (Alta, Media, Baja): ");
+            Luminosidad nivelLuz=Luminosidad.Media;
+            try{
+                nivelLuz=Luminosidad.valueOf(teclado.readLine());
+            }
+            catch(IOException e){
+                System.out.println("Error al leer la entrada del usuario");
+                e.printStackTrace();
+            }
+            pob.setNivelLuz(nivelLuz);
+
+            pob.setFechaInicio(LocalDate.now());
+
+        }
+        else{
+            System.out.println("La población no pertenece al experimento: " + this.nombre); 
+        }
     }
 
+    
     public void crearPoblacion(){
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Introduce el nombre de la población: ");
