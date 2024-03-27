@@ -8,6 +8,8 @@ public class Ejecutar{
 public static void main (String[] args){
 
     BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    Laboratorio Laboratorio = new Laboratorio("Laboratorio1", new ArrayList<Experimento>());
+    Experimento experimentoActual;
 
     System.out.println("Elige una opción: ");
     System.out.println("1. Abrir un archivo ");
@@ -20,7 +22,8 @@ public static void main (String[] args){
     System.out.println("8. Guardar como ");
     
     int opcion = 0;
-    
+    String nombre;
+
     try{
         opcion= Integer.parseInt(teclado.readLine());
     }catch(IOException e){
@@ -30,40 +33,60 @@ public static void main (String[] args){
 
     switch (opcion) {
         case 1:
-            
-
+            System.out.println("Introduce el nombre del archivo: ");
+            try {
+                nombre=teclado.readLine();
+                Laboratorio.abrirArchivo(nombre); 
+            } catch (IOException e) {
+                e.printStackTrace();
+            }     
             break;
     
         case 2:
-            
-        
+            experimentoActual=Laboratorio.crearExperimento();
             break;
-        
-        case 3: 
-        
-        crearPoblacion();
             
+        case 3: 
+            Laboratorio.accederExperimento().crearPoblacion();
             break;
 
         
         case 4:
+            Laboratorio.accederExperimento().visualizarPoblaciones();
             break;
         
         case 5:
+            Experimento e= Laboratorio.accederExperimento();
+            
+            System.out.println("Introduzca el nombre de la Población que quiere eliminar: ");
+            try {
+                nombre=teclado.readLine();
+            } catch (IOException r) {
+                r.printStackTrace();
+            }
+            
+            
+
 
             
             break;
 
         case 6:
+            
+                Laboratorio.accederExperimento().verDetallesPoblacion();
 
             break;
 
         case 7:
 
+            Laboratorio.guardar();
+
             break;
 
 
         case 8:
+
+            Laboratorio.guardarComo();
             
                 break;
     }

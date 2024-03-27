@@ -32,6 +32,14 @@ public class Experimento{
 
     //Getters y setters:
 
+    public String getNombre(){
+        return nombre;
+    }
+
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+
     public int getNumeroDeBacterias(){
         return numBacterias;
     }
@@ -164,6 +172,7 @@ public class Experimento{
         int cantidadInicial=0;
         try{
             cantidadInicial=Integer.parseInt(teclado.readLine());
+            comprobarCantidadComida(cantidadInicial);
         }catch(IOException e){
             System.out.println("Error al leer la entrada del usuario");
             e.printStackTrace();
@@ -182,6 +191,7 @@ public class Experimento{
         int dosisDiaStopIncremento=0;
         try{
             dosisDiaStopIncremento=Integer.parseInt(teclado.readLine());
+            comprobarCantidadComida(dosisDiaStopIncremento);
         }catch(IOException e){
             System.out.println("Error al leer la entrada del usuario");
             e.printStackTrace();
@@ -191,6 +201,7 @@ public class Experimento{
         int dosisDia30=0;
         try{
             dosisDia30=Integer.parseInt(teclado.readLine());
+            comprobarCantidadComida(dosisDia30);
         }catch(IOException e){
             System.out.println("Error al leer la entrada del usuario");
             e.printStackTrace();
@@ -208,15 +219,26 @@ public class Experimento{
         }
         
         Poblacion p = new Poblacion(nombre, fechaInicio, numBacterias, temperatura, dosisComida, nivelLuz);
-        poblaciones.add(p);
+        poblaciones.add(p); //Se añade al experimento actual
     }
 
     public void borrarPoblacion(Poblacion pob){
-        poblaciones.remove(pob);
+        try {
+            if(comprobarPoblacion(pob))
+            poblaciones.remove(pob);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public int comprobarCantidadComida(int c) throws ArithmeticException{
+        if (c<0||c>300) throw new ArithmeticException ("No es válida una dosis negativa o mayor que 300");
+        return c;
     }
 
     //toString:
-
+    @Override
     public String toString(){
         String texto="";
         texto += "Nombre: "+nombre+"\n";
@@ -225,6 +247,24 @@ public class Experimento{
         texto += "Dosis de comida: "+dosisComida+"\n";
         texto += "Poblaciones: "+poblaciones+"\n";
         return texto;
+    }
+
+    public void visualizarPoblaciones(){
+        for(Poblacion p: poblaciones){
+            System.out.println(p.getNombre);
+        }
+    
+    }
+
+    public boolean comprobarPoblacion(Poblacion p) throws FileNotFoundException{
+        for (Poblacion i: poblaciones){
+            if(i.getNombre().equals(p.getNombre)){
+                p=i;
+                return true;
+            }
+            else throw new FileNotFoundException("No se ha encontrado la poblacion en este experimento");
+        }
+        return false;
     }
     
 }

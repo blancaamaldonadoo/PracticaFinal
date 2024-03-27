@@ -8,6 +8,7 @@ public class Poblacion extends Experimento{
     private LocalDate fechaInicio;
     private Date fechaFin;
     private Luminosidad nivelLuz;
+    public char[] getNombre;
 
     public Poblacion(String nombre, LocalDate fechaInicio, int numBacterias, double temperatura, Dosis dosisComida, Luminosidad nivelLuz){
         super(numBacterias, temperatura, dosisComida);
