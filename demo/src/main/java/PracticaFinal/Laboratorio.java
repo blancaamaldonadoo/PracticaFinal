@@ -13,6 +13,25 @@ public class Laboratorio{
         this.nombreLab=nombreLab;
     }
 
+    //Getters y setters:
+
+    public String getNombreLab(){
+        return nombreLab;
+    }
+
+    public void setNombreLab(String nombreLab){
+        this.nombreLab=nombreLab;
+    }
+
+    //Métodos:
+
+    /**
+     * Método que crea un nuevo archivo
+     * @param archivo
+     * @return void
+     * @throws IOException
+     */
+
     public void createNewFile(File archivo){
         try {
             if (archivo.createNewFile()) {
@@ -26,6 +45,14 @@ public class Laboratorio{
         }
     }
     
+    /**
+     * Método que abre un archivo 
+     * @param nombreArchivo
+     * @return
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
+
     public String abrirArchivo(String nombreArchivo){
         File archivo= new File(nombreArchivo);
         StringBuilder contenido= new StringBuilder();
@@ -49,6 +76,14 @@ public class Laboratorio{
         return contenido.toString();//convierte el StringBuilder a una cadena String
 
     }
+
+    /**
+     * Método que crea un nuevo experimento
+     * @return Experimento
+     * @throws IOException
+     * @throws NumberFormatException
+     * @throws IOException
+     */
 
     public Experimento crearExperimento(){
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
@@ -144,7 +179,13 @@ public class Laboratorio{
         return e;
     }
 
-
+    /**
+     * Método que guarda un archivo
+     * @param nombreArchivo
+     * @param contenidoArchivo
+     * @return void
+     * @throws FileNotFoundException
+     */
 
     public void guardar(String nombreArchivo, String contenidoArchivo){
         File archivo = new File(nombreArchivo);
@@ -159,14 +200,24 @@ public class Laboratorio{
 
     }
 
+    /**
+     * Método que guarda un archivo con un nuevo nombre
+     * @param contenidoArchivo
+     * @return void
+     */
+
     public void guardarComo(String contenidoArchivo){
 
         Scanner scanner= new Scanner(System.in);
         System.out.println("Ingrese el nombre del archivo: ");
         String nombreArchivo= scanner.nextLine();
         guardar(nombreArchivo,contenidoArchivo);
-
     }
+
+    /**
+     * Método que accede a un experimento
+     * @return Experimento
+     */
 
     public Experimento accederExperimento(){
         Scanner scanner= new Scanner(System.in);

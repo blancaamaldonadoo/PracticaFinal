@@ -17,7 +17,45 @@ public class Dosis{
         this.diaActual=0;
     }
 
-    public int calcularDosisDiaria(){
+    public int getCantidadInicial(){
+        return cantidadInicial;
+    }
+
+    public void setCantidadInicial(int cantidadInicial){
+        this.cantidadInicial = cantidadInicial;
+    }
+
+    public int getDiaStopIncremento(){
+        return diaStopIncremento;
+    }
+
+    public void setDiaStopIncremento(int diaStopIncremento){
+        this.diaStopIncremento = diaStopIncremento;
+    }
+
+    public int getDosisDiaStopIncremento(){
+        return dosisDiaStopIncremento;
+    }
+
+    public void setDosisDiaStopIncremento(int dosisDiaStopIncremento){
+        this.dosisDiaStopIncremento = dosisDiaStopIncremento;
+    }
+
+    public int getDosisDia30(){
+        return dosisDia30;
+    }
+
+    public void setDosisDia30(int dosisDia30){
+        this.dosisDia30 = dosisDia30;
+    }
+
+    
+    /**
+     * Método que calcula la dosis diaria de comida que se debe suministrar a las bacterias
+     * @return
+     */
+
+     public int calcularDosisDiaria(){
         int dosisDiaria=0;
         if (diaActual<diaStopIncremento){
             dosisDiaria=cantidadInicial + diaActual*(dosisDiaStopIncremento - cantidadInicial)/diaStopIncremento;
@@ -29,5 +67,10 @@ public class Dosis{
         return dosisDiaria;
     }
 
-
+    @Override
+    public String toString(){
+        return "Dosis [cantidadInicial=" + cantidadInicial + ", diaStopIncremento=" + 
+        diaStopIncremento + ", dosisDiaStopIncremento=" + dosisDiaStopIncremento + ", dosisDia30=" 
+        + dosisDia30 + "]";
+    }
 }

@@ -2,6 +2,7 @@ package PracticaFinal;
 import java.sql.Date;
 import java.time.LocalDate;
 
+
 public class Poblacion extends Experimento{
 
     private String nombre;
@@ -56,6 +57,11 @@ public class Poblacion extends Experimento{
 
     //Métodos:
 
+    /**
+     * Método que muestra los detalles de una población de bacterias
+     * @return void
+     */
+
     public void verDetallesPoblacion(){
         System.out.println(toString());
     }
@@ -69,7 +75,7 @@ public class Poblacion extends Experimento{
         texto += "Fecha de fin: "+fechaFin+"\n";
         texto += "Número de bacterias: "+ getNumeroDeBacterias()+"\n";
         texto += "Temperatura (ºC): "+ getTemperatura()+"\n";
-        texto += "Dosis de comida: "+ getDosisComida()+"\n";
+        texto += "Dosis de comida: "+ getDosisComida().toString() + "\n";
         texto += "Nivel de luz: "+ nivelLuz+"\n";
         return texto;
     }

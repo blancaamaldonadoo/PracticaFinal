@@ -67,11 +67,25 @@ public class Experimento{
 
     //Métodos:
 
+    /**
+     * Método que imprime una lista con todas las poblaciones de bacterias del experimento
+     * @return void
+     * @param void
+     */
+
+
     public void imprimirPoblaciones(){
         for (Poblacion p: this.poblaciones){
             System.out.println(p); 
         }
     }
+
+    /**
+     * Método que modifica los datos de una población de bacterias
+     * @param pob
+     * @return void
+     * @throws IOException
+     */
 
     public void modificarPoblacion(Poblacion pob){
         if (this.poblaciones.contains(pob)){//Comprobar que la población pertenece al experimento:
@@ -137,7 +151,13 @@ public class Experimento{
         }
     }
 
-    
+    /**
+     * Método que crea una nueva población de bacterias
+     * @return void
+     * @param void
+     * @throws IOException
+     */
+
     public void crearPoblacion(){
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Introduce el nombre de la población: ");
@@ -222,6 +242,13 @@ public class Experimento{
         poblaciones.add(p); //Se añade al experimento actual
     }
 
+    /**
+     * Método que borra una población de bacterias
+     * @param pob
+     * @return void
+     * @throws FileNotFoundException
+     */
+
     public void borrarPoblacion(Poblacion pob){
         try {
             if(comprobarPoblacion(pob))
@@ -231,23 +258,25 @@ public class Experimento{
         }
     }
 
+    /**
+     * Método que comprueba si la cantidad de comida es válida
+     * @param c
+     * @return
+     * @throws ArithmeticException
+     */
 
     public int comprobarCantidadComida(int c) throws ArithmeticException{
         if (c<0||c>300) throw new ArithmeticException ("No es válida una dosis negativa o mayor que 300");
         return c;
     }
 
-    //toString:
-    @Override
-    public String toString(){
-        String texto="";
-        texto += "Nombre: "+nombre+"\n";
-        texto += "Número de bacterias: "+numBacterias+"\n";
-        texto += "Temperatura: "+temperatura+"\n";
-        texto += "Dosis de comida: "+dosisComida+"\n";
-        texto += "Poblaciones: "+poblaciones+"\n";
-        return texto;
-    }
+    
+
+    /**
+     * Método que visualiza las poblaciones de bacterias del experimento
+     * @return void
+     * @param void
+     */
 
     public void visualizarPoblaciones(){
         for(Poblacion p: poblaciones){
@@ -255,6 +284,13 @@ public class Experimento{
         }
     
     }
+
+    /**
+     * Método que comprueba si una población pertenece al experimento
+     * @param p
+     * @return
+     * @throws FileNotFoundException
+     */
 
     public boolean comprobarPoblacion(Poblacion p) throws FileNotFoundException{
         for (Poblacion i: poblaciones){
@@ -265,6 +301,34 @@ public class Experimento{
             else throw new FileNotFoundException("No se ha encontrado la poblacion en este experimento");
         }
         return false;
+    }
+
+    /**
+     * Método que busca una población de bacterias
+     * @param nombre
+     * @return
+     */
+
+    public Poblacion buscarPoblacion(String nombre){
+        for (Poblacion p:poblaciones){
+            if(p.getNombre()==nombre){
+                return p;
+            }
+        }
+        return null;
+    }
+
+
+    //toString:
+    @Override
+    public String toString(){
+        String texto="";
+        texto += "Nombre: "+nombre+"\n";
+        texto += "Número de bacterias: "+numBacterias+"\n";
+        texto += "Temperatura: "+temperatura+"\n";
+        texto += "Dosis de comida: "+dosisComida.toString()+"\n";
+        texto += "Poblaciones: "+poblaciones+"\n";
+        return texto;
     }
     
 }
