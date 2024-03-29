@@ -2,12 +2,15 @@ package PracticaFinal;
 import static PracticaFinal.Laboratorio.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import PracticaFinal.Poblacion.Luminosidad;
+
 import java.io.*;
 
 public class Ejecutar{
 public static void main (String[] args){
 
-    BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    /*BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
     Laboratorio Laboratorio = new Laboratorio("Laboratorio1", new ArrayList<Experimento>());
     Experimento experimentoActual;
 
@@ -107,8 +110,44 @@ public static void main (String[] args){
             
             break;
     }
-    
+    */
 
+    //PRUEBA DE MÉTODOS:
+    
+    ArrayList<Poblacion> poblaciones= new ArrayList<Poblacion>();
+    ArrayList<Experimento> experimentos= new ArrayList<Experimento>();
+    Laboratorio LabPrueba= new Laboratorio("Laboratorio Prueba", experimentos);
+
+
+    Dosis dosisPrueba1= new Dosis(80,20,150,70);
+    dosisPrueba1.calcularDosisDiaria();
+    
+    Poblacion pPrueba1= new Poblacion("PPrueba1", LocalDate.of(2024,3,27), 100,25.4, dosisPrueba1, Luminosidad.Alta);
+    pPrueba1.verDetallesPoblacion();
+    Poblacion pPrueba2= new Poblacion("PPrueba2", LocalDate.of(2024,3,27), 100,25.4, dosisPrueba1, Luminosidad.Media);
+    poblaciones.add(pPrueba1);
+    poblaciones.add(pPrueba2);
+    
+    Experimento ePrueba1= new Experimento("Experimento Prueba 1", 200, 25.4, dosisPrueba1, poblaciones); 
+    experimentos.add(ePrueba1);
+    ePrueba1.visualizarPoblaciones();
+    ePrueba1.borrarPoblacion(pPrueba1);
+    ePrueba1.visualizarPoblaciones();
+    ePrueba1.crearPoblacion();
+    ePrueba1.visualizarPoblaciones();
+    try {
+        ePrueba1.comprobarPoblacion(pPrueba2);
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    ePrueba1.modificarPoblacion(pPrueba2);
+    ePrueba1.visualizarPoblaciones();
+
+    String nombre= LabPrueba.accederExperimento().getNombre();
+    LabPrueba.guardar(nombre, ePrueba1.toString());
+    LabPrueba.guardarComo(ePrueba1.toString());
+  
 }
 
 }

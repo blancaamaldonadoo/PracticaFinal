@@ -198,7 +198,7 @@ public class Experimento{
             e.printStackTrace();
         }
 
-        System.out.println("Introduce el día de stop de incremento: ");
+        System.out.println("Introduce el día de stop de incremento (número de día del experimento (del 1 al 30)): ");
         int diaStopIncremento=0;
         try{
             diaStopIncremento=Integer.parseInt(teclado.readLine());
@@ -265,9 +265,9 @@ public class Experimento{
      * @throws ArithmeticException
      */
 
-    public int comprobarCantidadComida(int c) throws ArithmeticException{
+    public boolean comprobarCantidadComida(int c) throws ArithmeticException{
         if (c<0||c>300) throw new ArithmeticException ("No es válida una dosis negativa o mayor que 300");
-        return c;
+        return true;
     }
 
     
@@ -279,9 +279,14 @@ public class Experimento{
      */
 
     public void visualizarPoblaciones(){
+        if(poblaciones.isEmpty()){
+            System.out.println("No hay poblaciones en este experimento");
+        }
+        else{
         for(Poblacion p: poblaciones){
             System.out.println(p.getNombre);
         }
+    }
     
     }
 

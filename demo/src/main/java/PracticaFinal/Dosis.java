@@ -7,14 +7,12 @@ public class Dosis{
     private int diaStopIncremento;
     private int dosisDiaStopIncremento;
     private int dosisDia30;
-    private int diaActual;
 
     public Dosis(int cantidadInicial, int diaStopIncremento, int dosisDiaStopIncremento, int dosisDia30){
         this.cantidadInicial = cantidadInicial;
         this.diaStopIncremento = diaStopIncremento;
         this.dosisDiaStopIncremento = dosisDiaStopIncremento;
         this.dosisDia30 = dosisDia30;
-        this.diaActual=0;
     }
 
     public int getCantidadInicial(){
@@ -55,16 +53,17 @@ public class Dosis{
      * @return
      */
 
-     public int calcularDosisDiaria(){
-        int dosisDiaria=0;
-        if (diaActual<diaStopIncremento){
-            dosisDiaria=cantidadInicial + diaActual*(dosisDiaStopIncremento - cantidadInicial)/diaStopIncremento;
+     public void calcularDosisDiaria(){
+        int dosisDiaria[]= new int[30];
+        for (int i=0; i<30; i++){
+        if (i<=diaStopIncremento){
+            dosisDiaria[i]=cantidadInicial + i*(dosisDiaStopIncremento - cantidadInicial)/diaStopIncremento;
         }else{
-            dosisDiaria=dosisDiaStopIncremento+ (diaActual - diaStopIncremento)*(dosisDia30- dosisDiaStopIncremento)/(30-diaStopIncremento);
+            dosisDiaria[i]=dosisDiaStopIncremento+ (i - diaStopIncremento)*(dosisDia30- dosisDiaStopIncremento)/(30-diaStopIncremento);
 
         }
-        diaActual++;
-        return dosisDiaria;
+        System.out.println("Dosis del día " + (i+1) +" : " + dosisDiaria[i]+ " gramos.");
+    }
     }
 
     @Override
