@@ -121,6 +121,7 @@ public class Experimento{
                 System.out.println("Error al leer la entrada del usuario");
                 e.printStackTrace();
             }
+            pob.getDosisComida().setCantidadInicial(cantidadInicial);
 
             System.out.println("Introduce el nuevo día de stop de incremento: ");
             int diaStopIncremento=0;
@@ -131,6 +132,7 @@ public class Experimento{
                 System.out.println("Error al leer la entrada del usuario");
                 e.printStackTrace();
             }
+            pob.getDosisComida().setDiaStopIncremento(diaStopIncremento);
 
             System.out.println("Introduce el nuevo nivel de luminosidad (Alta, Media, Baja): ");
             Luminosidad nivelLuz=Luminosidad.Media;
@@ -169,7 +171,6 @@ public class Experimento{
             e.printStackTrace();
         }
         LocalDate fechaInicio=LocalDate.now();
-        LocalDate fechaFin=fechaInicio.plusDays(30);
         System.out.println("Introduce el número de bacterias: ");
         int numBacterias=0;
         try{
@@ -299,7 +300,7 @@ public class Experimento{
 
     public boolean comprobarPoblacion(Poblacion p) throws FileNotFoundException{
         for (Poblacion i: poblaciones){
-            if(i.getNombre().equals(p.getNombre)){
+            if(i.getNombre()==p.getNombre()){
                 p=i;
                 return true;
             }

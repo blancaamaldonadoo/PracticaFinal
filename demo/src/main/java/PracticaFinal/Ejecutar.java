@@ -1,10 +1,5 @@
 package PracticaFinal;
-import static PracticaFinal.Laboratorio.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
-
-import PracticaFinal.Poblacion.Luminosidad;
-
 import java.io.*;
 
 public class Ejecutar{
@@ -12,7 +7,6 @@ public static void main (String[] args){
 
     BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
     Laboratorio Laboratorio = new Laboratorio("Laboratorio1", new ArrayList<Experimento>());
-    Experimento experimentoActual;
 
     System.out.println("Elige una opción: ");
     System.out.println("1. Abrir un archivo ");
@@ -46,7 +40,7 @@ public static void main (String[] args){
             break;
     
         case 2:
-            experimentoActual=Laboratorio.crearExperimento();
+            Laboratorio.crearExperimento();
             break;
             
         case 3: 
@@ -110,6 +104,7 @@ public static void main (String[] args){
             
             break;
     }
+    
     
 
     /*PRUEBA DE MÉTODOS:
