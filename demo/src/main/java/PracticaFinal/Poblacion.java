@@ -2,6 +2,11 @@ package PracticaFinal;
 import java.sql.Date;
 import java.time.LocalDate;
 
+/**
+ * Clase que representa una población de bacterias
+ * @version 1.0, 07/06/2021
+ * @autor Blanca Maldonado
+ */
 
 public class Poblacion extends Experimento{
 

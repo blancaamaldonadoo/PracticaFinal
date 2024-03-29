@@ -3,6 +3,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
 
+/**
+ * Clase que representa un laboratorio
+ * @version 1.0, 07/06/2021
+ * @autor Blanca Maldonado
+ * @param experimentos
+ * @param nombreLab
+ */
+
 public class Laboratorio{
    
     private ArrayList<Experimento> experimentos;

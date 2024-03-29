@@ -1,5 +1,9 @@
 package PracticaFinal;
-import java.sql.Date;
+/**
+ * Clase que representa la dosis de comida que se suministra a las bacterias
+ * @version 1.0, 07/06/2021
+ * @autor Blanca Maldonado
+ */
 
 public class Dosis{
 

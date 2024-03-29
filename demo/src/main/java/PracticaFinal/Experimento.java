@@ -1,8 +1,22 @@
 package PracticaFinal;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.io.*;
+
+/**
+ * Clase que representa un experimento
+ * @version 1.0, 07/06/2021
+ * @autor Blanca Maldonado
+ * @param nombre
+ * @param numBacterias
+ * @param temperatura
+ * @param dosisComida
+ * @param poblaciones
+ * @param numBacterias
+ * @param temperatura
+ * @param dosisComida
+ * @param poblaciones
+ */
 
 import PracticaFinal.Poblacion.Luminosidad;
 
