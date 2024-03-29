@@ -10,7 +10,7 @@ import java.io.*;
 public class Ejecutar{
 public static void main (String[] args){
 
-    /*BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
     Laboratorio Laboratorio = new Laboratorio("Laboratorio1", new ArrayList<Experimento>());
     Experimento experimentoActual;
 
@@ -110,10 +110,10 @@ public static void main (String[] args){
             
             break;
     }
-    */
-
-    //PRUEBA DE MÉTODOS:
     
+
+    /*PRUEBA DE MÉTODOS:
+
     ArrayList<Poblacion> poblaciones= new ArrayList<Poblacion>();
     ArrayList<Experimento> experimentos= new ArrayList<Experimento>();
     Laboratorio LabPrueba= new Laboratorio("Laboratorio Prueba", experimentos);
@@ -146,7 +146,8 @@ public static void main (String[] args){
 
     String nombre= LabPrueba.accederExperimento().getNombre();
     LabPrueba.guardar(nombre, ePrueba1.toString());
-    LabPrueba.guardarComo(ePrueba1.toString());
+    LabPrueba.guardarComo(ePrueba1.toString()); 
+    */
   
 }
 
